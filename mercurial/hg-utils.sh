@@ -1,4 +1,4 @@
-LOG_FILE=/dev/stdout
+LOG_FILE=/dev/null
 
 function remote_exists() {
     local host=$1
@@ -13,7 +13,7 @@ function remote_push() {
     local host=$1
     local path=$2
     
-    hg push ${host}/${path} >> ${LOG_FILE } 2>&1 
+    hg push ${host}/${path} >> ${LOG_FILE} 2>&1 
 }
 
 function remote_clone() {
@@ -33,22 +33,21 @@ function remote_update() {
     
     remote_exists ${host} ${path}
     if test $? -eq 0; then
-	echo "Pushing to ${host}:${path}"
 	remote_push ${host} ${path}
     else
-	echo "Cloning to ${host}:${path}"
 	remote_clone ${host} ${path}
     fi
 }
 
 function local_pull() {
-
+    echo "TODO: local_pull"
 }
 
 function local_clone() {
+    echo "TODO: local_clone"
 
 }
 
 function local_update() {
-
+    echo "TODO: local_update"
 }
